@@ -24,6 +24,10 @@ namespace Weelo.Infrastructure.Persistence.Contexts
             _authenticatedUser = authenticatedUser;
         }
         public DbSet<Product> Products { get; set; }
+        public DbSet<Owner> Owners{ get; set; }
+        public DbSet<Property> Properties { get; set; }
+        public DbSet<PropertyImage> PropertyImages { get; set; }
+        public DbSet<PropertyTrace> PropertyTraces { get; set; }
 
         public override Task<int> SaveChangesAsync(CancellationToken cancellationToken = new CancellationToken())
         {
