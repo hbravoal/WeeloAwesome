@@ -1,16 +1,15 @@
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
-using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
-using Microsoft.Extensions.Logging;
-using Microsoft.OpenApi.Models;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
+using Weelo.Application;
+using Weelo.Application.Interfaces;
+using Weelo.Infrastructure.Identity;
+using Weelo.Infrastructure.Persistence;
+using Weelo.Infrastructure.Shared;
 using Weelo.WebApi.Extensions;
+using Weelo.WebApi.Services;
 
 namespace Weelo.WebApi
 {
@@ -26,12 +25,15 @@ namespace Weelo.WebApi
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
-
+            services.AddApplicationLayer();
+            services.AddIdentityInfrastructure(Configuration);
+            services.AddPersistenceInfrastructure(Configuration);
+            services.AddSharedInfrastructure(Configuration);
+            services.AddSwaggerExtension();
             services.AddControllers();
-            services.AddSwaggerGen(c =>
-            {
-                c.SwaggerDoc("v1", new OpenApiInfo { Title = "Weelo.WebApi", Version = "v1" });
-            });
+            services.AddApiVersioningExtension();
+            services.AddHealthChecks();
+            services.AddScoped<IAuthenticatedUserService, AuthenticatedUserService>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -44,10 +46,13 @@ namespace Weelo.WebApi
                 //app.UseSwaggerUI(c => c.SwaggerEndpoint("/swagger/v1/swagger.json", "Weelo.WebApi v1"));
             }
 
+            app.UseHttpsRedirection();
             app.UseRouting();
-
+            app.UseAuthentication();
             app.UseAuthorization();
             app.UseSwaggerExtension();
+            app.UseErrorHandlingMiddleware();
+            app.UseHealthChecks("/health");
             app.UseEndpoints(endpoints =>
             {
                 endpoints.MapControllers();
