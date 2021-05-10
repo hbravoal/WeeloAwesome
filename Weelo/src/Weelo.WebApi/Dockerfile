@@ -18,5 +18,6 @@ RUN dotnet publish "Weelo.WebApi.csproj" -c Release -o /app/publish
 FROM base AS final
 WORKDIR /app
 COPY --from=publish /app/publish .
-COPY ["src/Weelo.WebApi/Weelo.WebApi.xml", "/app"]
+COPY "src/Weelo.WebApi/Weelo.WebApi.xml" "./Weelo.WebApi.xml"
+
 ENTRYPOINT ["dotnet", "Weelo.WebApi.dll"]

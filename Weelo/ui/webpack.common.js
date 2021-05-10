@@ -11,6 +11,8 @@ module.exports ={
       Services: path.resolve(__dirname,'src','Services'),      
       assets: path.resolve(__dirname,'src','assets'),      
       Types: path.resolve(__dirname,'src','Types'),
+      Reducers: path.resolve(__dirname,'src','Reducers'),
+      Data: path.resolve(__dirname,'src','Data'),
   },
   
     extensions: [".js", ".jsx"]

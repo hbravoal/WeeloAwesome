@@ -32,7 +32,12 @@ const Header = () => {
                 <div className="col-auto col-img">
                     <h1>Weelo</h1>
                     </div>
-                <div className="col-auto"><a className="button button-yellow" href="LogOut" onClick={handleSession}> <span>Cerrar sesión</span></a></div>
+                    {IsAuth()  ? 
+                    <div className="col-auto"><a className="button button-yellow" href="https://github.com/hbravoal/WeeloAwesome" target="__blank" > <span>Github Repository</span></a></div>
+                    :
+                    <div className="col-auto"><a className="button button-yellow" href="LogOut" onClick={handleSession}> <span>Cerrar sesión</span></a></div>
+              }
+                
                 </div>
                 
                              

@@ -6,6 +6,7 @@ import Dashboard from 'Components/Layout/Dashboard';
 import {IsAuth} from 'Services/authService';
 
 const Login = lazy(() => import('Components/Login'));
+const Home = lazy(() => import('Components/Home'));
 
 
  
@@ -31,11 +32,11 @@ const Router = () => {
                 </Dashboard>
             </Route>
             
-            {/* <PrivateRoute path = '/Catalog' exact >
-                <Dashboard title="Catálogo: Catálogo - Aliado Financiero">
-                        <Catalog/>
+            <PrivateRoute path = '/Home' exact >
+                <Dashboard title="Home: Weelo">
+                        <Home/>
                 </Dashboard>
-            </PrivateRoute> */}
+            </PrivateRoute>
 
          
             <Route path = '/' exact >      

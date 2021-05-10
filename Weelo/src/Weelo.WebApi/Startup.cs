@@ -15,6 +15,7 @@ namespace Weelo.WebApi
 {
     public class Startup
     {
+        readonly string MyAllowSpecificOrigins = "_myAllowSpecificOrigins";
         public Startup(IConfiguration configuration)
         {
             Configuration = configuration;
@@ -54,14 +55,14 @@ namespace Weelo.WebApi
             app.UseSwaggerExtension();
             app.UseErrorHandlingMiddleware();
             app.UseHealthChecks("/health");
-            app.UseCors(builder =>
-            {
-                builder
-                .WithOrigins("http://localhost:9000/")
-                .AllowAnyOrigin()
-                .AllowAnyMethod()
-                .AllowAnyHeader();
-            });
+
+            var urlAceptadas = Configuration
+                       .GetSection("AllowedHosts").Value.Split(",");
+            app.UseCors(builder => builder.WithOrigins(urlAceptadas)
+                                  .AllowAnyHeader()
+                                  .AllowAnyMethod()
+                                  );
+
             app.UseEndpoints(endpoints =>
             {
                 endpoints.MapControllers();

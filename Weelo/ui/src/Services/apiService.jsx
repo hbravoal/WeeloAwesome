@@ -38,15 +38,7 @@ export const  POST =  async (url,baseapi,action,dataBody,headers,initialState={}
                 ErrorMessage:'Ha ocurrido un error inesperado, por favor intente mas tarde.'
                 
             }
-        }
-          if(parseInt(error.response.status)===401){
-            return {
-                Error:true,
-                ErrorMessage:'Ha finalizado la sessión',
-                StatusCode:401
-            }
-          }
-          
+        } 
             return {
                 Error:true,
                 ErrorMessage:'Ha ocurrido un error.',

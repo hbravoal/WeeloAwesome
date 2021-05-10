@@ -1,10 +1,8 @@
-﻿using Microsoft.AspNetCore.Authorization;
-using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Mvc;
 using System.Threading.Tasks;
-using Weelo.Application.Features.Products.Commands.CreateProduct;
 using Weelo.Application.Features.Products.Commands.DeleteProductById;
 using Weelo.Application.Features.Products.Commands.UpdateProduct;
-using Weelo.Application.Features.Products.Queries.GetAllProducts;
+
 using Weelo.Application.Features.Products.Queries.GetProductById;
 using Weelo.Application.Features.Properties.Commands.Create;
 
@@ -14,10 +12,10 @@ namespace Weelo.WebApi.Controllers.v1
     {
         
         [HttpGet]
-        public async Task<IActionResult> Get([FromQuery] GetAllProductsParameter filter)
+        public async Task<IActionResult> Get([FromQuery] Application.Features.Properties.Queries.GetAll.GetAllPropertiesQuery filter)
         {
 
-            return Ok(await Mediator.Send(new GetAllProductsQuery() { PageSize = filter.PageSize, PageNumber = filter.PageNumber }));
+            return Ok(await Mediator.Send(new Application.Features.Properties.Queries.GetAll.GetAllPropertiesQuery() { PageSize = filter.PageSize, PageNumber = filter.PageNumber }));
         }
 
         // GET api/<controller>/5
