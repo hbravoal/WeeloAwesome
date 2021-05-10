@@ -1,12 +1,10 @@
 ﻿using AutoMapper;
-using System;
-using System.Collections.Generic;
-using System.Text;
 using Weelo.Application.Features.Owners.Commands.Create;
 using Weelo.Application.Features.Owners.Queries.GetAll;
-using Weelo.Application.Features.Products.Commands.CreateProduct;
-using Weelo.Application.Features.Products.Queries.GetAllProducts;
 using Weelo.Application.Features.Properties.Commands.Create;
+using Weelo.Application.Features.PropertiesImage.Commands.Create;
+using Weelo.Application.Features.PropertyTraces.Commands.Create;
+using Weelo.Application.Features.PropertyTraces.Queries.GetAll;
 using Weelo.Domain.Entities;
 
 namespace Weelo.Application.Mappings
@@ -15,9 +13,9 @@ namespace Weelo.Application.Mappings
     {
         public GeneralProfile()
         {
-            CreateMap<Product, GetAllProductsViewModel>().ReverseMap();
-            CreateMap<CreateProductCommand, Product>();
-            CreateMap<GetAllProductsQuery, GetAllProductsParameter>();
+            #region PropertiesImage
+            CreateMap<CreatePropertyImageCommand, PropertyImage>();   
+            #endregion
 
             #region Property
             CreateMap<PropertyImage, Weelo.Application.Features.Properties.Queries.GetAll.PropertyImageViewModel>().ReverseMap();
@@ -27,10 +25,10 @@ namespace Weelo.Application.Mappings
 
             #endregion
 
-            #region Products
-            CreateMap<Product, GetAllProductsViewModel>().ReverseMap();
-            CreateMap<Features.PropertiesImage.Commands.Create.CreatePropertyImageCommand, PropertyImage>();
-            CreateMap<GetAllProductsQuery, GetAllProductsParameter>();
+            #region PropertTrace
+            CreateMap<PropertyTrace, GetAllPropertyTracesViewModel>().ReverseMap();
+            CreateMap<CreatePropertyTraceCommand, PropertyTrace>();
+            CreateMap<GetAllPropertyTracesQuery, GetAllPropertyTracesParameter>();
             #endregion
             #region Owners
             CreateMap<Owner, GetAllOwnersViewModel>().ReverseMap();

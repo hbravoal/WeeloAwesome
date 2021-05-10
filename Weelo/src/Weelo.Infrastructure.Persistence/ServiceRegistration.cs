@@ -29,10 +29,10 @@ namespace Weelo.Infrastructure.Persistence
                    b => b.MigrationsAssembly(typeof(ApplicationDbContext).Assembly.FullName)));
             }
             #region Repositories
-            services.AddTransient(typeof(IGenericRepositoryAsync<>), typeof(GenericRepositoryAsync<>));
-            services.AddTransient<IProductRepositoryAsync, ProductRepositoryAsync>();
+            services.AddTransient(typeof(IGenericRepositoryAsync<>), typeof(GenericRepositoryAsync<>));            
             services.AddTransient<IPropertyRepositoryAsync, PropertyRepositoryAsync>();
             services.AddTransient<IPropertyImageRepositoryAsync, PropertyImageRepositoryAsync>();
+            services.AddTransient<IPropertyTraceRepositoryAsync, PropertyTraceRepositoryAsync>();
             services.AddTransient<IOwnerRepositoryAsync, OwnerRepositoryAsync>();
             #endregion
         }

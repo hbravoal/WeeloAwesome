@@ -1,13 +1,8 @@
-﻿using AutoMapper;
-using FluentValidation;
+﻿using FluentValidation;
 using MediatR;
 using Microsoft.Extensions.DependencyInjection;
-using System;
-using System.Collections.Generic;
 using System.Reflection;
-using System.Text;
 using Weelo.Application.Behaviours;
-using Weelo.Application.Features.Products.Commands.CreateProduct;
 
 namespace Weelo.Application
 {

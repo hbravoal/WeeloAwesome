@@ -15,18 +15,18 @@ namespace Weelo.Application.Features.Owners.Queries.GetAll
     }
     public class GetAllOwnersQueryHandler : IRequestHandler<GetAllOwnersQuery, PagedResponse<IEnumerable<GetAllOwnersViewModel>>>
     {
-        private readonly IProductRepositoryAsync _productRepository;
+        private readonly IOwnerRepositoryAsync _target;
         private readonly IMapper _mapper;
-        public GetAllOwnersQueryHandler(IProductRepositoryAsync productRepository, IMapper mapper)
+        public GetAllOwnersQueryHandler(IOwnerRepositoryAsync target, IMapper mapper)
         {
-            _productRepository = productRepository;
+            _target = target;
             _mapper = mapper;
         }
 
         public async Task<PagedResponse<IEnumerable<GetAllOwnersViewModel>>> Handle(GetAllOwnersQuery request, CancellationToken cancellationToken)
         {
             var validFilter = _mapper.Map<GetAllOwnersParameter>(request);
-            var result = await _productRepository.GetPagedReponseAsync(validFilter.PageNumber, validFilter.PageSize);
+            var result = await _target.GetPagedReponseAsync(validFilter.PageNumber, validFilter.PageSize);
             var resultViewModel= _mapper.Map<IEnumerable<GetAllOwnersViewModel>>(result);
             return new PagedResponse<IEnumerable<GetAllOwnersViewModel>>(resultViewModel, validFilter.PageNumber, validFilter.PageSize);
         }

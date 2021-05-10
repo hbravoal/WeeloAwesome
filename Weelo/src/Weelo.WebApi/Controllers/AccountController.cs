@@ -17,6 +17,8 @@ namespace Weelo.WebApi.Controllers
         {
             _accountService = accountService;
         }
+
+
         [HttpPost("authenticate")]
         public async Task<IActionResult> AuthenticateAsync(AuthenticationRequest request)
         {

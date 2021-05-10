@@ -18,8 +18,8 @@ namespace Weelo.Infrastructure.Identity.Seeds
             {
                 UserName = "basicuser",
                 Email = "basicuser@gmail.com",
-                FirstName = "John",
-                LastName = "Doe",
+                FirstName = "Basic",
+                LastName = "User",
                 EmailConfirmed = true,
                 PhoneNumberConfirmed = true
             };
@@ -28,7 +28,7 @@ namespace Weelo.Infrastructure.Identity.Seeds
                 var user = await userManager.FindByEmailAsync(defaultUser.Email);
                 if (user == null)
                 {
-                    await userManager.CreateAsync(defaultUser, "123Pa$$word!");
+                    await userManager.CreateAsync(defaultUser, "password");
                     await userManager.AddToRoleAsync(defaultUser, Roles.Basic.ToString());
                 }
 

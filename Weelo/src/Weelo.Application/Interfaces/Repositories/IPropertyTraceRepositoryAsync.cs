@@ -6,8 +6,7 @@ using Weelo.Domain.Entities;
 
 namespace Weelo.Application.Interfaces.Repositories
 {
-    public interface IProductRepositoryAsync : IGenericRepositoryAsync<Product>
+    public interface IPropertyTraceRepositoryAsync : IGenericRepositoryAsync<PropertyTrace>
     {
-        Task<bool> IsUniqueBarcodeAsync(string barcode);
     }
 }

@@ -7,8 +7,8 @@ namespace Weelo.Test.Integration.API
 {
     class ApiPropertyTest
     {
-        [TestCase("Get", "api/v1/Customer")]
-        [TestCase("Get", "api/v1/Customer/1")]
+        [TestCase("Get", "api/v1/Property")]
+        [TestCase("Get", "api/v1/Property/1")]
         [Ignore("Need to fix jwt setting value and handle 401 error")]
         public async Task GetAllCustomerTestAsync(string method, string URL)
         {

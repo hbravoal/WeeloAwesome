@@ -1,0 +1,87 @@
+
+#Notas
+1. Tomé como reto,me puse como tiempo de finalización 2 días (15 horas de trabajo aprox).
+2. El proyecto, No quedó en su totalidad completo, no quise dejarlo así sabiendo que lo haría de una forma poco profesional,
+quise en la mayor forma posible dejarlo, Escalable y bien desarrollado.
+En el tiempo, se pensó la Arquitectura,Librerías y demás que se utilizaría para dicho proyecto.
+3. Como seguridad me esforcé en la mayor parte del tiempo.
+4. Fue un reto bueno.
+Github:https://github.com/hbravoal/WeeloAwesome
+
+#API****
+# Introducción 
+TODO: Proyecto para Weelo. Una prueba técnica que me hubiese gustado tener un poco mas de tiempo para dejar una arquitectura más marcada e 
+organizada (Quise como reto, avanzar lo máximo que pueda en 2 días (Aproximadamente 15 horas de trabajo)).
+
+Por lo que, dejé implementaciones que mejorarían Seguridad, Optimización  y demás como parte de "Abre bocas".
+
+
+# Getting Started
+TODO: Guide users through getting your code up and running on their own system. In this section you can talk about:
+1.	Installation process
+2.	Software dependencies
+3.	Latest releases
+4.	API references
+
+# Información
+
+Usuarios.
+Básico:
+email:basicuser@gmail.com
+pass:passowrd
+
+SuperAdm
+superadmin@gmail.com
+pass:password
+
+Nota: Password usados netamente para este proyecto como prueba.
+
+
+# Seguridad
+	JWT 
+	Authorization (Acepta Roles [Roles])
+	CORS =AllowedOrigins (,) delimiter,dns que puede acceder al API
+	Encrypt (Dejé una implementación para encriptación de data sensible)
+
+
+
+
+#Cómo empezar
+Cambiar ConnectionString
+Lanzar Migración debe tener el proyecto "Targeteado".
+1. update-database -Context=IdentityContext  //[TargetProject=Weelo.Infrastructure.Identity]
+2. update-database -Context=ApplicationDbContext    //[TargetProject=Weelo.Infrastructure.Persistence]
+
+
+
+#Debug
+Se puede con :
+Docker
+Weelo.WebApi -> Normal. 
+Https desbilitado por proceso de pruebas.
+
+#Semillas
+Ubicación:  Weelo.Infrastructure.Identity.Seeds
+Puede cambiar y/o agregar usuarios a consideración.
+
+
+
+
+
+#UI ****
+
+#Introducción
+Aplicación creada en React Js con WebPack,Reducers,Lazy Loadings,Seguridad,Babel, Manejo de ambientes,Routers, Axios
+
+
+
+#Postdata
+Logré avanzar lo básico en el sitio Web. 
+
+
+
+
+#DEBUG
+
+npm install
+npm run start:{environment}   | dev,local,prod

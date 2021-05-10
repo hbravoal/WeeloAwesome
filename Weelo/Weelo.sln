@@ -27,7 +27,12 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "test", "test", "{00A08368-2
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Weelo.Test.Unit", "test\Weelo.Test.Unit\Weelo.Test.Unit.csproj", "{89437837-6662-4212-9DB8-225CF22E258B}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Weelo.Test.Integration.API", "test\Weelo.Test.Integration.API\Weelo.Test.Integration.API.csproj", "{020CE503-4662-49D4-8E16-F0BA58DEAB89}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Weelo.Test.Integration.API", "test\Weelo.Test.Integration.API\Weelo.Test.Integration.API.csproj", "{020CE503-4662-49D4-8E16-F0BA58DEAB89}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "docs", "docs", "{E8363CA4-FEC1-40E2-9CF4-64B42AA4BFE0}"
+	ProjectSection(SolutionItems) = preProject
+		Help.txt = Help.txt
+	EndProjectSection
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

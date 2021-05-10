@@ -24,7 +24,9 @@ const Login = () => {
   const handleFOrmSubmitChange = async e => {    
     e.preventDefault();
     dispatch({type:PROGRESS,data:70});
-     var isSucess=await LoginConsume('superadmin@gmail.com','123Pa$$word!');
+    //  var isSucess=await LoginConsume('superadmin@gmail.com','123Pa$$word!');
+    console.log(state.Email.value,state.Password.value)
+     var isSucess=await LoginConsume(state.Email.value,state.Password.value);
      dispatch({type:PROGRESS,data:100});
      if(!isSucess){
       dispatch({type:ERROR,data:{
