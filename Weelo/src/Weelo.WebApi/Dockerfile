@@ -12,6 +12,9 @@ COPY . .
 WORKDIR "/src/src/Weelo.WebApi"
 RUN dotnet build "Weelo.WebApi.csproj" -c Release -o /app/build
 
+RUN ["apt-get", "update"]
+RUN ["apt-get", "install", "-y", "vim"]
+
 FROM build AS publish
 RUN dotnet publish "Weelo.WebApi.csproj" -c Release -o /app/publish
 
@@ -19,5 +22,6 @@ FROM base AS final
 WORKDIR /app
 COPY --from=publish /app/publish .
 COPY "src/Weelo.WebApi/Weelo.WebApi.xml" "./Weelo.WebApi.xml"
+COPY "src/Weelo.WebApi/web.config" "./web.config"
 
 ENTRYPOINT ["dotnet", "Weelo.WebApi.dll"]
