@@ -22,6 +22,17 @@ namespace Weelo.Infrastructure.Persistence.Repository
         {
             return await _dbContext.Set<T>().FindAsync(id);
         }
+        public IQueryable<T> GetPagedReponse(int pageNumber, int pageSize)
+        {
+            IQueryable<T> queryable = _dbContext
+                .Set<T>()
+                .Skip((pageNumber - 1) * pageSize)
+                .Take(pageSize)
+                .AsNoTracking();
+            //.ToListAsync();
+            return queryable;
+           
+        }
 
         public async Task<IReadOnlyList<T>> GetPagedReponseAsync(int pageNumber, int pageSize)
         {

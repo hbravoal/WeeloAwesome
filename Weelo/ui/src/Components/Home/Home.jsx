@@ -3,6 +3,7 @@ import React,{Fragment,useEffect,useReducer,useContext} from 'react';
 import {useHistory} from 'react-router-dom';
 import HomeFormData from  'Data/HomeFormData';
 import LoadingSpinner from 'Components/Layout/LoadingSpinner';
+import Card from './Card';
 import Loading from 'Components/Layout/Loading';
 import {HomeReducer} from 'Reducers/HomeReducer';
 import {GetPropertiesConsume} from 'Services/consumeService';
@@ -11,10 +12,19 @@ const Login = () => {
   const history = useHistory();
 
   const [state,dispatch] = useReducer(HomeReducer, HomeFormData);
-  useEffect(() => {  
-    dispatch({type:PROGRESS,data:70});
-    // LogOut();
-    dispatch({type:PROGRESS,data:100});
+  useEffect(async () => {  
+    dispatch({type:PROGRESS,data:5});
+    console.log('enter')
+    if(Array.isArray(state.Data) && state.Data.length<=0){
+      console.log('enter2')
+      dispatch({type:LOADING,data:true});
+      await GetPropertiesConsume(dispatch);
+      if(state.Errors.EndSession){
+        setTimeout(()=>{
+          history.push("/Login");
+        },2000)
+      }
+    }
     return () => {
       dispatch({type:PROGRESS,data:0});
     }
@@ -38,14 +48,14 @@ const Login = () => {
               <div className="row justify-content-center">
                 <div className="col-md-10 text-center">
 
-                {/* {Loading && <LoadingSpinner/>}
+                {state.Loading && <LoadingSpinner/>}
                         
-                        {!Loading && CatalogDonation.map((item,index)=>{
+                        {!state.Loading && state.Data.map((item,index)=>{
                           return (
-                            <Card className="low fadeIn" item={item} key={item.ProductGuid}/>
+                            <Card className="low fadeIn" item={item} key={item.id}/>
                           )
                         })
-                        }     */}
+                        }    
                 </div>
               </div>
             </div>

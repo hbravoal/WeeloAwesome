@@ -2,12 +2,13 @@
 const  HomeFormData= {
     Errors:{
       HaveError:false,
-      Message:'',
-      Redirect:''
+      Message:'',      
     },
     Progress: 0,
     Loading:false,
-    TryLoaded:false
+    TryLoaded:false,
+    EndSession:false,
+    Data:[]
   };
   export default HomeFormData;
   

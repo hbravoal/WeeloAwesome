@@ -1,6 +1,6 @@
 import {Login as LoginService} from 'Services/authService';
-import {POST} from './apiService';
-import {SEGMENT,ERROR,RESET_FORM,CATALOG,LOADING,RESET_CLIENT,CLIENT_INFO,TRY_LOAD,CLIENT_INFO_REFRESH,PRODUCT_DETAIL,CLIENT_ATTRIBUTES,CLIENT_ATTRIBUTES_REFRESH,CATALOG_DONATION} from 'Types';
+import {GET,POST} from './apiService';
+import {ERROR,RESET_FORM,PROPERTIES,LOADING,PROGRESS ,RESET_CLIENT,CLIENT_INFO,TRY_LOAD,CLIENT_INFO_REFRESH,PRODUCT_DETAIL,CLIENT_ATTRIBUTES,CLIENT_ATTRIBUTES_REFRESH,CATALOG_DONATION} from 'Types';
 import {getToken} from 'Services/authService';
 
 export const LoginConsume = async(email,passwd) => {
@@ -33,16 +33,15 @@ export const LoginConsume = async(email,passwd) => {
         return true;
 }
 
-export const GetPropertiesConsume = async() => {
+export const GetPropertiesConsume = async(dispatch) => {
     // dispatch({type:RESET_CLIENT});
     let headers= {
-        
-        
+        Authorization: 'Bearer '+getToken(),
     }
-    let requestData= {email: email ,password:passwd};
-    let dataResult =await POST(process.env.API_URL,process.env.API_URL_BASE,
-        process.env.API_ACTION_LOGIN,requestData,headers);
-        
+    dispatch({type:PROGRESS,data:30});
+    let dataResult =await GET(`${process.env.API_URL}/${process.env.API_URL_BASE}`,
+        `${process.env.API_ACTION_PROPERTIES}?PageNumber=1&PageSize=20`,headers);
+        dispatch({type:PROGRESS,data:60});
         if(dataResult.Error){
             switch (dataResult.StatusCode){
                 case 404:
@@ -56,9 +55,14 @@ export const GetPropertiesConsume = async() => {
                 return false;
             }
          console.log(dataResult);
-          return false;
+          return [];
         }
-        var jwt= dataResult.Data.data.jwToken;
-        LoginService(jwt);        
-        return true;
+        console.log(dataResult)
+        var data= dataResult.Data.data;
+        dispatch({type:PROGRESS,data:90});
+        dispatch({type:PROPERTIES,data});
+        dispatch({type:PROGRESS,data:100});
+        dispatch({type:LOADING,data:false});
+        
+        return data;
 }

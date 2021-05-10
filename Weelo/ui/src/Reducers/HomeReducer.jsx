@@ -1,4 +1,4 @@
-import {LOADING,PROGRESS,ERROR,RESET_FORM,CHANGE_LOGIN_FORM_EMAIL,CHANGE_LOGIN_FORM_PASSWORD} from 'Types';
+import {LOADING,PROGRESS,ERROR,PROPERTIES,CHANGE_LOGIN_FORM_EMAIL,CHANGE_LOGIN_FORM_PASSWORD} from 'Types';
 
 export const HomeReducer = (actualState, action)=>{
     switch (action.type){
@@ -17,7 +17,12 @@ export const HomeReducer = (actualState, action)=>{
         ...actualState,
         Errors:action.data
       }
-        
+      case PROPERTIES:
+      return {
+        ...actualState,
+        Data:action.data
+      }
+      
       default:
         return actualState;
     }
