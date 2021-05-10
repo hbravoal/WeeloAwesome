@@ -16,6 +16,11 @@ namespace Weelo.Infrastructure.Persistence.Contexts
     {
         private readonly IDateTimeService _dateTime;
         private readonly IAuthenticatedUserService _authenticatedUser;
+        // This constructor is used of runit testing
+        public ApplicationDbContext()
+        {
+
+        }
 
         public ApplicationDbContext(DbContextOptions<ApplicationDbContext> options, IDateTimeService dateTime, IAuthenticatedUserService authenticatedUser) : base(options)
         {

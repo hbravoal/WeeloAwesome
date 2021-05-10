@@ -27,9 +27,8 @@ namespace Weelo.Application.Features.Properties.Commands.Create
                 .GreaterThan(0).WithMessage("{PropertyName} must be grean than 0.")
                 .NotNull().WithMessage("{PropertyName} is required.");
             RuleFor(p => p.OwnerId)
-                .GreaterThan(0).WithMessage("{PropertyName} must be grean than 0.")
-                ;
-                //.MustAsync(IsValidOwner).WithMessage("{PropertyName} Not  exists.");
+                .GreaterThan(0).WithMessage("{PropertyName} must be grean than 0.")                
+                .MustAsync(IsValidOwner).WithMessage("{PropertyName} Not  exists.");
 
         }
         private async Task<bool> IsValidOwner(int ownerId, CancellationToken cancellationToken)
@@ -37,7 +36,7 @@ namespace Weelo.Application.Features.Properties.Commands.Create
             var response= await _repository.GetByIdAsync(ownerId);
             if (response != null && response.Id >= 0)
                 return true;
-            return true;
+            return false;
         }
 
     }
