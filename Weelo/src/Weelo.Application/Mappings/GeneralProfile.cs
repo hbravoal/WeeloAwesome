@@ -2,6 +2,8 @@
 using System;
 using System.Collections.Generic;
 using System.Text;
+using Weelo.Application.Features.Owners.Commands.Create;
+using Weelo.Application.Features.Owners.Queries.GetAll;
 using Weelo.Application.Features.Products.Commands.CreateProduct;
 using Weelo.Application.Features.Products.Queries.GetAllProducts;
 using Weelo.Application.Features.Properties.Commands.Create;
@@ -25,9 +27,16 @@ namespace Weelo.Application.Mappings
 
             #endregion
 
+            #region Products
             CreateMap<Product, GetAllProductsViewModel>().ReverseMap();
             CreateMap<Features.PropertiesImage.Commands.Create.CreatePropertyImageCommand, PropertyImage>();
             CreateMap<GetAllProductsQuery, GetAllProductsParameter>();
+            #endregion
+            #region Owners
+            CreateMap<Owner, GetAllOwnersViewModel>().ReverseMap();
+            CreateMap<CreateOwnerCommand, Owner>();
+            CreateMap<GetAllOwnersQuery, GetAllOwnersParameter>();
+            #endregion
 
         }
     }
