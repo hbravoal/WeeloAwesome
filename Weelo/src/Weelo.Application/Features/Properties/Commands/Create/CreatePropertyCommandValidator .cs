@@ -1,10 +1,15 @@
 ﻿using FluentValidation;
+using Microsoft.EntityFrameworkCore.Internal;
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
-using Weelo.Application.Features.Properties.Commands.Create;
 using Weelo.Application.Interfaces.Repositories;
 
-namespace Weelo.Application.Features.Products.Commands.CreateProduct
+
+namespace Weelo.Application.Features.Properties.Commands.Create
 {
     public class CreatePropertyCommandValidator : AbstractValidator<CreatePropertyCommand>
     {
@@ -21,8 +26,10 @@ namespace Weelo.Application.Features.Products.Commands.CreateProduct
             RuleFor(p => p.Price)
                 .GreaterThan(0).WithMessage("{PropertyName} must be grean than 0.")
                 .NotNull().WithMessage("{PropertyName} is required.");
-            RuleFor(p => p.OwnerId).
-           MustAsync(IsValidOwner).WithMessage("{PropertyName} Not  exists.");
+            RuleFor(p => p.OwnerId)
+                .GreaterThan(0).WithMessage("{PropertyName} must be grean than 0.")
+                ;
+                //.MustAsync(IsValidOwner).WithMessage("{PropertyName} Not  exists.");
 
         }
         private async Task<bool> IsValidOwner(int ownerId, CancellationToken cancellationToken)
@@ -30,7 +37,7 @@ namespace Weelo.Application.Features.Products.Commands.CreateProduct
             var response= await _repository.GetByIdAsync(ownerId);
             if (response != null && response.Id >= 0)
                 return true;
-            return false;
+            return true;
         }
 
     }
