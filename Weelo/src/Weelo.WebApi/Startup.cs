@@ -47,7 +47,15 @@ namespace Weelo.WebApi
                 //app.UseSwagger();
                 //app.UseSwaggerUI(c => c.SwaggerEndpoint("/swagger/v1/swagger.json", "Weelo.WebApi v1"));
             }
-
+            app.UseStaticFiles();
+            app.UseDirectoryBrowser(new DirectoryBrowserOptions
+            {
+                FileProvider = new Microsoft.Extensions.FileProviders.PhysicalFileProvider
+    (
+        System.IO.Path.Combine(System.IO.Directory.GetCurrentDirectory(), "wwwroot", "uploads")
+    ),
+                RequestPath = "/uploads"
+            });
             app.UseHttpsRedirection();
             app.UseRouting();
             app.UseAuthentication();

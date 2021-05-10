@@ -22,8 +22,13 @@ namespace Weelo.Application.Mappings
             CreateMap<CreatePropertyCommand, Property>();
             CreateMap<Property, Features.Properties.Queries.GetAll.GetAllPropertiesViewModel>().ReverseMap();
             CreateMap<Features.Properties.Queries.GetAll.GetAllPropertiesQuery, Features.Properties.Queries.GetAll.GetAllPropertiesParameter>();
-            
+
             #endregion
+
+            CreateMap<Product, GetAllProductsViewModel>().ReverseMap();
+            CreateMap<Features.PropertiesImage.Commands.Create.CreatePropertyImageCommand, PropertyImage>();
+            CreateMap<GetAllProductsQuery, GetAllProductsParameter>();
+
         }
     }
 }

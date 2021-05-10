@@ -29,6 +29,12 @@
   </ItemGroup>
 
   <ItemGroup>
+    <Content Update="wwwroot\uploads\Atest.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+  </ItemGroup>
+
+  <ItemGroup>
     <None Update="Weelo.WebApi.xml">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
