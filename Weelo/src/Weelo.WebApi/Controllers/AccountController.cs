@@ -6,6 +6,7 @@ using Weelo.Application.Interfaces;
 
 namespace Weelo.WebApi.Controllers
 {
+    [Microsoft.AspNetCore.Cors.EnableCors("AllowOrigin")]
     [Route("api/[controller]")]
     [ApiController]
     public class AccountController : ControllerBase

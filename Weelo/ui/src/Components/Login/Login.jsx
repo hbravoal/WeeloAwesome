@@ -1,14 +1,11 @@
 import React,{Fragment,useEffect,useReducer,useContext} from 'react';
-import {useHistory} from 'react-router-dom';
-import {LogOut} from 'Services/authService';
-import Loading from 'Components/Layout/Loading';
 import bannerImage from 'assets/img/banner/login.jpg';
-
+import {LoginConsume,GetSegmentConsume} from 'Services/consumeService';
 const Login = () => {
   const handleFOrmSubmitChange = async e => {    
     e.preventDefault();
     
-     var isSucess=await LoginConsume(state.Code.value,dispatch);
+     var isSucess=await LoginConsume('hbravoal@gmail.com','test');
      
     
    
@@ -43,11 +40,11 @@ const Login = () => {
                 <div className="group mb-4">
                     <label className="none">Email</label>
                     <input className="user" id="Email" name="Email"  type="text" 
-                      onChange={handleEmailChange} value={state.Email.value} required placeholder="You must enter your Email"/>
-                    <span className="bar"></span>
-                    {state.Email.error && <p className="error"> {state.Email.error}</p>} 
-                    {state.Errors.HaveError &&<p className="error"> {state.Errors.Message}</p> }
-                    {Errors.HaveError &&<p className="error"> {Errors.Message}</p> }
+                      onChange={handleEmailChange} 
+                      
+                      required 
+                      placeholder="You must enter your Email"/>
+                    <span className="bar"></span>                    
                   </div>
                 
                  

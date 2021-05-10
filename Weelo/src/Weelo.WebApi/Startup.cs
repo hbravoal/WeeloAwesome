@@ -25,6 +25,7 @@ namespace Weelo.WebApi
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
+            services.AddCors();
             services.AddApplicationLayer();
             services.AddIdentityInfrastructure(Configuration);
             services.AddPersistenceInfrastructure(Configuration);
@@ -53,6 +54,14 @@ namespace Weelo.WebApi
             app.UseSwaggerExtension();
             app.UseErrorHandlingMiddleware();
             app.UseHealthChecks("/health");
+            app.UseCors(builder =>
+            {
+                builder
+                .WithOrigins("http://localhost:9000/")
+                .AllowAnyOrigin()
+                .AllowAnyMethod()
+                .AllowAnyHeader();
+            });
             app.UseEndpoints(endpoints =>
             {
                 endpoints.MapControllers();
