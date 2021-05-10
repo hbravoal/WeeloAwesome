@@ -1,8 +1,7 @@
 import React,{Fragment,useState } from 'react';
-import brandLogoImage from 'assets/img/brand/logo.svg';
 import {useHistory} from 'react-router-dom';
 import {IsAuth,LogOut} from 'Services/authService';
-import { Tooltip } from 'reactstrap';
+
 
 const Header = () => {    
     const [tooltipOpen, setTooltipOpen] = useState(false);
@@ -29,9 +28,10 @@ const Header = () => {
         {
              <section className="menu">
             <div className="container">
-               
                 <div className="row justify-content-between">
-                <div className="col-auto col-img"><a className="logo-reto"  onClick={handleNavigate} href="Login"><img className="img-fluid" src={brandLogoImage} alt="ImageBrand"/></a></div>
+                <div className="col-auto col-img">
+                    <h1>Weelo</h1>
+                    </div>
                 <div className="col-auto"><a className="button button-yellow" href="LogOut" onClick={handleSession}> <span>Cerrar sesión</span></a></div>
                 </div>
                 
@@ -40,7 +40,6 @@ const Header = () => {
                 
             </div>
         </section>
-        
         }
         </Fragment>
         );
