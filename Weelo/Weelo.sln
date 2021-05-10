@@ -21,6 +21,8 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Weelo.Infrastructure.Persis
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Weelo.Infrastructure.Shared", "src\Weelo.Infrastructure.Shared\Weelo.Infrastructure.Shared.csproj", "{FAA30DC3-CC53-4A82-83A9-CE289F648C22}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "ui", "ui", "{FB90ABAE-26AD-4ACB-A2DD-94B69D81950A}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
